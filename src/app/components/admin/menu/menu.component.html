@@ -1,0 +1,52 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img style="max-width:80px;margin-right: 10px ;" src="../../../assets/img/logo.png" alt="">
+  <a class="navbar-brand" href="#">Software Shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/adm_dashboard">Panel administratora</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light"style="background-color: #e3f2fd;" >
+  <a class="navbar-brand" href="#">Panel administratora</a>
+  <ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+    <a class="nav-link active" routerLink="/landing">Sklep</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" routerLink="/adm_dashboard">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" routerLink="/adm_products">Produkty</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" [routerLink]="['/adm_orders']" routerLinkActive="router-link-active" >Zamówienia</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Ustawienia</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" >Użytkownicy</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" >Newsletter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" >Logi</a>
+  </li>
+</ul>
+</nav>

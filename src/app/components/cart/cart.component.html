@@ -1,0 +1,62 @@
+<app-panel-top></app-panel-top>
+<div class="products">
+  <div class="payment">
+    <div id="paypal" style="width: 600px;margin: 50px;">
+
+    <h3>Formularz kupna</h3>
+    <form action="http://www.jakubadamus.cba.pl/paypal.php" method="get" #paymentForm>
+
+      <div class="form-group">
+        <label for="imieFormControlInput">Imię</label>
+      <input class="form-control" type="text" #firstName name="firstName" id="imieFormControlInput" placeholder="Imie">
+    </div>
+
+    <div class="form-group">
+      <label for="nazwiskoFormControlInput">Nazwisko</label>
+       <input class="form-control" type="text" #lastName name="lastName" id="nazwiskoFormControlInput" placeholder="Nazwisko">
+
+</div>
+
+<div class="form-group">
+  <label for="emailFormControlInput">Adres email</label>
+        <input class="form-control" type="text" #email name="email" id="emailFormControlInput" placeholder="Email">
+
+        </div>
+        <div class="form-group">
+          <label for="phoneFormControlInput">Telefon</label>
+        <input class="form-control" type="text" name="phone" id="phone" placeholder="Telefon">
+</div>
+
+      <ng-container *ngFor="let object of this.mainService.cart">
+        <input type="hidden" name="products[]" value="{{ object | json }}"></ng-container><label for="">Akceptuję regulamin:<input style="margin-left: 10px;margin-right: 10px  ;" #regulamin type="checkbox" name="aggrement" id="" (change)="0"></label><button class="btn-primary btn-sm" [disabled]="!regulamin.checked" (click)="paymentForm.submit()">Kup teraz</button>
+    </form>
+
+    <span class="badge badge-secondary"><h5>Do zapłaty: {{getCartPrice()}} PLN</h5></span>
+  </div>
+  </div>
+
+  <table class="table" style="margin:0 auto;" id="cartTable">
+    <thead *ngIf="this.mainService.products">
+      <tr>
+        <th>obrazek</th>
+        <th>dane</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let object of this.mainService.cart">
+        <tr style="background-color: whitesmoke;">
+          <td><img src="{{object.product.thumbnail}}" alt="" style="width: 160px;"></td>
+          <td>
+            <ul>
+              <li>Tytuł: {{object.product.title}}</li>
+              <li>Cena: {{object.product.price}}</li>
+              <li>Kategoria: {{object.product.category}}</li>
+            </ul>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+
+</div>

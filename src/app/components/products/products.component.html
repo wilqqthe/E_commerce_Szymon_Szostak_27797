@@ -1,0 +1,29 @@
+<app-panel-top></app-panel-top>
+
+<div class="products">
+  <table class="table" style="margin:0 auto;" id="productsTable">
+    <thead>
+      <tr>
+        <th>Cover</th>
+        <th>Dane</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let product of this.mainService.products?.productsTable">
+        <tr style="background-color: whitesmoke;">
+          <td style="width: 200px;"><img src="{{product.thumbnail}}" alt=""></td>
+          <td>
+            <h2>{{product.title}}</h2>
+
+
+            <h5>Cena: {{product.price}} PLN</h5>
+            <h5>Kategoria: {{product.category}}</h5>
+
+          </td>
+          <td><button class="btn-lg btn-primary" (click)="addToCart(product)">Do koszyka</button></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

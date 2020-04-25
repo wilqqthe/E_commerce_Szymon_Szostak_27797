@@ -1,0 +1,61 @@
+<app-menu></app-menu>
+<div style="display: flex;flex-direction: row;">
+
+  <div class="content" style="width: 100%;">
+
+
+    <div class="content-container">
+      <table class="table" style="margin: 0 auto;">
+        <thead>
+          <tr>
+            <th colspan="5">
+              <h2>Dodaj nowy produkt</h2>
+              <button class="btn-primary btn-sm" (click)="getProducts()">Odswież listę</button>
+            </th>
+          </tr>
+          <tr>
+            <th><h3>Link do miniatury</h3></th>
+            <th><h3>Nazwa produktu</h3></th>
+            <th><h3>Cena produktu</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" [(ngModel)]="newProduct.thumbnail"></td>
+            <td><input type="text" [(ngModel)]="newProduct.title"></td>
+            <td><input type="number"[(ngModel)]="newProduct.price"></td>
+            <td><select [(ngModel)]="newProduct.category">
+                <option value="game">Game</option>
+                <option value="tool">Tool</option>
+              </select></td>
+            <td><button class="btn-primary btn-sm"(click)="this.mainService.addProduct(newProduct)">Dodaj produkt</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table" id="productsTable">
+        <thead *ngIf="this.mainService.products">
+          <tr>
+            <th>Cover</th>
+            <th>Dane</th>
+            <th>Akcje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let product of this.mainService.products?.productsTable">
+            <tr>
+              <td><img src="{{product.thumbnail}}" style="width: 160px;" alt=""></td>
+              <td>
+                <ul>
+                  <li>Tytuł: {{product.title}}</li>
+                  <li>Cena: {{product.price}}</li>
+                  <li>Kategoria: {{product.category}}</li>
+                </ul>
+              </td>
+              <td><button class="btn-primary btn-sm"(click)="this.mainService.removeProduct(product.id)">Usuń produkt</button></td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
